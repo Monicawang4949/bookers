@@ -4,36 +4,28 @@
     <tr>
       <th>Title</th>
       <th>Body</th>
-    <tr>
+    </tr>
   </thead>
   <tbody>
+    <% @books.each do |book| %>
     <tr>
       <td>
-        <% @books.each do |book| %>
-        <span class="table_body"><%= book.title %></span>
-        <% end %>
+          <span class="table_body"><%= book.title %></span>
       </td>
       <td>
-        <% @books.each do |book| %>
-        <span class="table_body"><%= book.body %></span>
-        <% end %>
+          <span class="table_body"><%= book.body %></span>
       </td>
       <td>
-        <% @books.each do |book| %>
-        <span class="table_body"><%= link_to "Show", book_path(book.id), method: :get %></span>
-        <% end %>
+          <span class="table_body"><%= link_to "Show", book_path(book.id), method: :get %></span>
       </td>
       <td>
-        <% @books.each do |book| %>
-        <span class="table_body"><%= link_to "Edit", edit_book_path(book.id), method: :get %></span>
-        <% end %>
+          <span class="table_body"><%= link_to "Edit", edit_book_path(book.id), method: :get %></span>
       </td>
       <td>
-        <% @books.each do |book| %>
-        <span class="table_body"><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure？"%></span>
-        <% end %>
+          <span class="table_body"><%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure？"%></span>
       </td>
     </tr>
+    <% end %>
   </tbody>
 </table>
 <div class="new_main">
@@ -42,8 +34,8 @@
     <%= @book.errors.count %>errors prohibited this book from being saved:
     <ul>
       <% @book.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-    <% end %>
+      <li><%= message %></li>
+      <% end %>
     </ul>
   <% end %>
 
@@ -54,6 +46,6 @@
     <p>Body</p>
     <%= f.text_area :body %>
 
-    <%= f.submit 'Creat Book', class:"submit_button" %>
+    <%= f.submit 'Create Book', class:"submit_button" %>
   <% end %>
 </div>
